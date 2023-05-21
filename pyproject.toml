@@ -1,9 +1,18 @@
-[build-system]
-# AVOID CHANGING REQUIRES: IT WILL BE UPDATED BY PYSCAFFOLD!
-requires = ["setuptools>=46.1.0", "setuptools_scm[toml]>=5"]
-build-backend = "setuptools.build_meta"
+[tool.poetry]
+name = "meet-api"
+version = "0.1.0"
+description = ""
+authors = ["Subhomoy Roy Choudhury <subhomoyrchoudhury@gmail.com>"]
+readme = "README.md"
+packages = [{include = "meet_api"}]
 
-[tool.setuptools_scm]
-# For smarter version schemes and other configuration options,
-# check out https://github.com/pypa/setuptools_scm
-version_scheme = "no-guess-dev"
+[tool.poetry.dependencies]
+python = "^3.11"
+google-api-python-client = "^2.86.0"
+google-auth-httplib2 = "^0.1.0"
+google-auth-oauthlib = "^1.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
