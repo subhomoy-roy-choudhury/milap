@@ -93,18 +93,7 @@ class MeetAPI(object):
             # Call the Calendar API
 
             # checking whether teacher is busy or not
-            events_result = (
-                service.events()
-                .list(
-                    calendarId="primary",
-                    timeMin=end1,
-                    timeMax=end2,
-                    maxResults=1,
-                    singleEvents=True,
-                    orderBy="startTime",
-                )
-                .execute()
-            )
+            events_result = service.events().list(calendarId="primary",timeMin=end1,timeMax=end2,maxResults=1,singleEvents=True,orderBy="startTime",).execute() # pylint: disable=maybe-no-member
             events = events_result.get("items", [])
 
             if events:
@@ -135,16 +124,7 @@ class MeetAPI(object):
                 "end": {"dateTime": date2, "timeZone": "Asia/Kolkata"},
             }
 
-            event_result = (
-                service.events()
-                .insert(
-                    calendarId="primary",
-                    sendNotifications=True,
-                    body=event,
-                    conferenceDataVersion=1,
-                )
-                .execute()
-            )
+            event_result =service.events().insert(calendarId="primary",sendNotifications=True,body=event,conferenceDataVersion=1).execute() # pylint: disable=maybe-no-member
             
             return event_result
 
