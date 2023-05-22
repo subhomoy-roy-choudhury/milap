@@ -13,7 +13,7 @@ LONG_DESCRIPTION = 'provide your oath2 credentials and other arguments as input 
 
 # Setting up
 setup(
-    name="meet-api",
+    name="google-meet-api",
     version=VERSION,
     author="Subhomoy Roy Choudhury",
     author_email="subhomoyrchoudhury@gmail.com",
