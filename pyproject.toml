@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "meet-api"
-version = "0.1.0"
+name = "google-meet-api"
+version = "0.0.2"
 description = ""
 authors = ["Subhomoy Roy Choudhury <subhomoyrchoudhury@gmail.com>"]
 readme = "README.md"
