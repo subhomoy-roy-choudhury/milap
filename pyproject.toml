@@ -4,7 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["Subhomoy Roy Choudhury <subhomoyrchoudhury@gmail.com>"]
 readme = "README.md"
-packages = [{include = "meet_api"}]
+packages = [{include = "src/meet_api"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
