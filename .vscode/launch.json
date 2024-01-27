@@ -5,12 +5,23 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: execute",
+            "name": "Python: Run Sample",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/src/meet_api/meet.py",
+            "program": "${workspaceFolder}/example/sample.py",
             "console": "integratedTerminal",
             "justMyCode": true
+        },
+        {
+            "name": "Python: Run Test Cases",
+            "type": "python",
+            "request": "launch",
+            "module": "pytest",
+            "args": [
+                "-v", // verbose output
+                "tests" // path to your tests
+            ],
+            "console": "integratedTerminal"
         }
     ]
 }
