@@ -8,7 +8,7 @@
             "name": "Python: execute",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/src/meet-api/meet.py",
+            "program": "${workspaceFolder}/example/create_meeting.py",
             "console": "integratedTerminal",
             "justMyCode": true
         }
