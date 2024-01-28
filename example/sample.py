@@ -1,10 +1,9 @@
 from meet_api.main import GoogleMeetService
-from datetime import datetime
 
 google_meet_service = GoogleMeetService(
-    client_id="129906636160-go0nig6got2r9bqj4q4s9g42ghn0c9j8.apps.googleusercontent.com",
-    client_secret="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",
-    refresh_token="1//0g2uO1vefKJubCgYIARAAGBASNwF-L9IrPqiZ5rIlBwo92ZmDy4AJY9kZ21ZPzH9eBVwVkKpajonPFqak8coWVaWx23GdfSog5rc",
+    client_id="<GOOGLE CLOUD CLIENT ID>",
+    client_secret="<GOOGLE CLOUD CLIENT SECRET>",
+    refresh_token="<REFRESH TOEKN>",
 )
 
 # Create Meeting
