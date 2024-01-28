@@ -1,12 +1,12 @@
 [tool.poetry]
-name = "google-meet-api"
-version = "0.0.6"
-description = "This is a tool to get IP and system information of a specific device"
+name = "milap"
+version = "0.0.0"
+description = "A Python Package for Google Meet Operations"
 authors = ["Subhomoy Roy Choudhury <subhomoyrchoudhury@gmail.com>"]
 readme = "README.md"
 license = "MIT"
-homepage = "https://github.com/subhomoy-roy-choudhury/Hack_IP"
-repository = "https://github.com/subhomoy-roy-choudhury/Hack_IP"
+homepage = "https://github.com/subhomoy-roy-choudhury/milap"
+repository = "https://github.com/subhomoy-roy-choudhury/milap"
 keywords = ["python", "google-meet", "api"]
 classifiers = [
     "License :: OSI Approved :: MIT License",

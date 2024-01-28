@@ -1,4 +1,4 @@
-from meet_api.main import GoogleMeetService
+from milap import GoogleMeetService
 
 google_meet_service = GoogleMeetService(
     client_id="<GOOGLE CLOUD CLIENT ID>",
