@@ -3,7 +3,7 @@ from unittest.mock import Mock, patch
 from googleapiclient.errors import HttpError
 from datetime import datetime
 from dateutil import parser
-from src.meet_api.main import GoogleMeetService
+from src.milap.main import GoogleMeetService
 
 
 # Test for successful service creation

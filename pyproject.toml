@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "milap"
-version = "0.0.0"
+version = "0.0.1"
 description = "A Python Package for Google Meet Operations"
 authors = ["Subhomoy Roy Choudhury <subhomoyrchoudhury@gmail.com>"]
 readme = "README.md"
@@ -18,7 +18,7 @@ classifiers = [
     "Intended Audience :: Developers",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
-packages = [{include = "src/meet_api"}]
+packages = [{include = "src/milap"}]
 
 [tool.poetry-dynamic-versioning]
 enable = true
