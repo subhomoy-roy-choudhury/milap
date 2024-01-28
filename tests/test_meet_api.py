@@ -7,8 +7,8 @@ from src.milap.main import GoogleMeetService
 
 
 # Test for successful service creation
-@patch("src.meet_api.main.build")
-@patch("src.meet_api.main.Credentials.from_authorized_user_info")
+@patch("src.milap.main.build")
+@patch("src.milap.main.Credentials.from_authorized_user_info")
 def test_get_service_success(mock_credentials, mock_build):
     mock_credentials.return_value = Mock(expired=False)
     mock_build.return_value = Mock()
@@ -22,8 +22,8 @@ def test_get_service_success(mock_credentials, mock_build):
 
 
 # Test for failure due to HTTP error
-@patch("src.meet_api.main.build", side_effect=HttpError(Mock(status=404), b"Not found"))
-@patch("src.meet_api.main.Credentials.from_authorized_user_info")
+@patch("src.milap.main.build", side_effect=HttpError(Mock(status=404), b"Not found"))
+@patch("src.milap.main.Credentials.from_authorized_user_info")
 def test_get_service_http_error(mock_credentials, mock_build):
     mock_credentials.return_value = Mock(expired=False)
 
@@ -34,8 +34,8 @@ def test_get_service_http_error(mock_credentials, mock_build):
 
 
 # Test for failure due to other exceptions
-@patch("src.meet_api.main.build", side_effect=Exception("Random error"))
-@patch("src.meet_api.main.Credentials.from_authorized_user_info")
+@patch("src.milap.main.build", side_effect=Exception("Random error"))
+@patch("src.milap.main.Credentials.from_authorized_user_info")
 def test_get_service_other_exception(mock_credentials, mock_build):
     mock_credentials.return_value = Mock(expired=False)
 
@@ -100,9 +100,9 @@ def test_prepare_utc_datetime_strings_invalid(date_str, time_str):
 
 
 # Test for successful event insertion
-@patch("src.meet_api.main.uuid.uuid4", return_value="unique-id")
+@patch("src.milap.main.uuid.uuid4", return_value="unique-id")
 @patch(
-    "src.meet_api.main.GoogleMeetService._prepare_utc_datetime_strings",
+    "src.milap.main.GoogleMeetService._prepare_utc_datetime_strings",
     return_value=("2022-01-01T12:00:00.000Z", "2022-01-01T12:45:00.000Z"),
 )
 def test_insert_calendar_event_success(mock_prepare_utc, mock_uuid4):
@@ -124,7 +124,7 @@ def test_insert_calendar_event_success(mock_prepare_utc, mock_uuid4):
 
 # Test for invalid date and time
 @patch(
-    "src.meet_api.main.GoogleMeetService._prepare_utc_datetime_strings",
+    "src.milap.main.GoogleMeetService._prepare_utc_datetime_strings",
     return_value=(None, None),
 )
 def test_insert_calendar_event_invalid_datetime(mock_prepare_utc):
@@ -146,9 +146,9 @@ def test_insert_calendar_event_invalid_datetime(mock_prepare_utc):
 
 
 # Test for failure due to HttpError
-@patch("src.meet_api.main.uuid.uuid4", return_value="unique-id")
+@patch("src.milap.main.uuid.uuid4", return_value="unique-id")
 @patch(
-    "src.meet_api.main.GoogleMeetService._prepare_utc_datetime_strings",
+    "src.milap.main.GoogleMeetService._prepare_utc_datetime_strings",
     return_value=("2022-01-01T12:00:00.000Z", "2022-01-01T12:45:00.000Z"),
 )
 def test_insert_calendar_event_http_error(mock_prepare_utc, mock_uuid4):
@@ -169,9 +169,9 @@ def test_insert_calendar_event_http_error(mock_prepare_utc, mock_uuid4):
 
 
 # Test when the slot is booked
-@patch("src.meet_api.main.GoogleMeetService._get_service")
+@patch("src.milap.main.GoogleMeetService._get_service")
 @patch(
-    "src.meet_api.main.GoogleMeetService._prepare_utc_datetime_strings",
+    "src.milap.main.GoogleMeetService._prepare_utc_datetime_strings",
     return_value=("2022-01-01T12:00:00.000Z", "2022-01-01T12:45:00.000Z"),
 )
 def test_is_slot_booked_true(mock_prepare_utc, mock_get_service):
@@ -188,9 +188,9 @@ def test_is_slot_booked_true(mock_prepare_utc, mock_get_service):
 
 
 # Test when the slot is not booked
-@patch("src.meet_api.main.GoogleMeetService._get_service")
+@patch("src.milap.main.GoogleMeetService._get_service")
 @patch(
-    "src.meet_api.main.GoogleMeetService._prepare_utc_datetime_strings",
+    "src.milap.main.GoogleMeetService._prepare_utc_datetime_strings",
     return_value=("2022-01-01T12:00:00.000Z", "2022-01-01T12:45:00.000Z"),
 )
 def test_is_slot_booked_false(mock_prepare_utc, mock_get_service):
@@ -207,9 +207,9 @@ def test_is_slot_booked_false(mock_prepare_utc, mock_get_service):
 
 
 # Test for failure due to HttpError
-@patch("src.meet_api.main.GoogleMeetService._get_service")
+@patch("src.milap.main.GoogleMeetService._get_service")
 @patch(
-    "src.meet_api.main.GoogleMeetService._prepare_utc_datetime_strings",
+    "src.milap.main.GoogleMeetService._prepare_utc_datetime_strings",
     return_value=("2022-01-01T12:00:00.000Z", "2022-01-01T12:45:00.000Z"),
 )
 def test_is_slot_booked_error(mock_prepare_utc, mock_get_service):
@@ -226,9 +226,9 @@ def test_is_slot_booked_error(mock_prepare_utc, mock_get_service):
 
 
 # Test for successful event creation
-@patch("src.meet_api.main.GoogleMeetService._get_service")
+@patch("src.milap.main.GoogleMeetService._get_service")
 @patch(
-    "src.meet_api.main.GoogleMeetService._insert_calendar_event",
+    "src.milap.main.GoogleMeetService._insert_calendar_event",
     return_value={"id": "event-id"},
 )
 def test_create_meeting_event_success(mock_insert_calendar_event, mock_get_service):
@@ -248,7 +248,7 @@ def test_create_meeting_event_success(mock_insert_calendar_event, mock_get_servi
 
 
 # Test when service is unavailable
-@patch("src.meet_api.main.GoogleMeetService._get_service", return_value=None)
+@patch("src.milap.main.GoogleMeetService._get_service", return_value=None)
 def test_create_meeting_event_no_service(mock_get_service):
     gms = GoogleMeetService("client_id", "client_secret", "refresh_token")
     result = gms.create_meeting_event(
@@ -260,7 +260,7 @@ def test_create_meeting_event_no_service(mock_get_service):
 
 
 # Test for successful event update
-@patch("src.meet_api.main.GoogleMeetService._get_service")
+@patch("src.milap.main.GoogleMeetService._get_service")
 def test_update_meeting_event_success(mock_get_service):
     mock_service = Mock()
     mock_get_service.return_value = mock_service
@@ -279,7 +279,7 @@ def test_update_meeting_event_success(mock_get_service):
 
 
 # Test when service is unavailable
-@patch("src.meet_api.main.GoogleMeetService._get_service", return_value=None)
+@patch("src.milap.main.GoogleMeetService._get_service", return_value=None)
 def test_update_meeting_event_no_service(mock_get_service):
     gms = GoogleMeetService("client_id", "client_secret", "refresh_token")
     result = gms.update_meeting_event("event-id", {"summary": "Updated Meeting"})
@@ -289,7 +289,7 @@ def test_update_meeting_event_no_service(mock_get_service):
 
 
 # Test for failure due to HttpError
-@patch("src.meet_api.main.GoogleMeetService._get_service")
+@patch("src.milap.main.GoogleMeetService._get_service")
 def test_update_meeting_event_http_error(mock_get_service):
     mock_service = Mock()
     mock_get_service.return_value = mock_service
@@ -308,7 +308,7 @@ def test_update_meeting_event_http_error(mock_get_service):
 
 
 # Test for successful event deletion
-@patch("src.meet_api.main.GoogleMeetService._get_service")
+@patch("src.milap.main.GoogleMeetService._get_service")
 def test_delete_meeting_event_success(mock_get_service):
     mock_service = Mock()
     mock_get_service.return_value = mock_service
@@ -327,7 +327,7 @@ def test_delete_meeting_event_success(mock_get_service):
 
 
 # Test when service is unavailable
-@patch("src.meet_api.main.GoogleMeetService._get_service", return_value=None)
+@patch("src.milap.main.GoogleMeetService._get_service", return_value=None)
 def test_delete_meeting_event_no_service(mock_get_service):
     gms = GoogleMeetService("client_id", "client_secret", "refresh_token")
     result = gms.delete_meeting_event("event-id")
@@ -337,7 +337,7 @@ def test_delete_meeting_event_no_service(mock_get_service):
 
 
 # Test for failure due to HttpError
-@patch("src.meet_api.main.GoogleMeetService._get_service")
+@patch("src.milap.main.GoogleMeetService._get_service")
 def test_delete_meeting_event_http_error(mock_get_service):
     mock_service = Mock()
     mock_get_service.return_value = mock_service
@@ -358,7 +358,7 @@ def test_delete_meeting_event_http_error(mock_get_service):
 
 
 # Test for successful fetching of events
-@patch("src.meet_api.main.GoogleMeetService._get_service")
+@patch("src.milap.main.GoogleMeetService._get_service")
 def test_fetch_meeting_by_criteria_success(mock_get_service):
     mock_service = Mock()
     mock_get_service.return_value = mock_service
@@ -379,7 +379,7 @@ def test_fetch_meeting_by_criteria_success(mock_get_service):
 
 
 # Test when service is unavailable
-@patch("src.meet_api.main.GoogleMeetService._get_service", return_value=None)
+@patch("src.milap.main.GoogleMeetService._get_service", return_value=None)
 def test_fetch_meeting_by_criteria_no_service(mock_get_service):
     gms = GoogleMeetService("client_id", "client_secret", "refresh_token")
     result = gms.fetch_meeting_by_criteria(
@@ -391,7 +391,7 @@ def test_fetch_meeting_by_criteria_no_service(mock_get_service):
 
 
 # Test for failure due to HttpError
-@patch("src.meet_api.main.GoogleMeetService._get_service")
+@patch("src.milap.main.GoogleMeetService._get_service")
 def test_fetch_meeting_by_criteria_http_error(mock_get_service):
     mock_service = Mock()
     mock_get_service.return_value = mock_service
