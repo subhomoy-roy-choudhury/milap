@@ -1,10 +1,8 @@
 <br/>
 <p align="center">
   <a href="https://github.com/subhomoy-roy-choudhury/milap">
-    <img src="https://socialify.git.ci/subhomoy-roy-choudhury/milap/image?description=1&descriptionEditable=A%20Python%20Package%20for%20Google%20Meet%20Operations&font=Source%20Code%20Pro&forks=1&issues=1&language=1&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark" alt="Hack_IP" width="640" height="320" />
+    <img src="https://socialify.git.ci/subhomoy-roy-choudhury/milap/image?description=1&descriptionEditable=A%20Python%20Package%20for%20Google%20Meet%20Operations&font=Source%20Code%20Pro&forks=1&issues=1&language=1&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark" alt="Milap" width="640" height="320" />
   </a>
-
-  <!-- <h3 align="center">Hack IP</h3> -->
 
   <p align="center">
     A Python Package for Google Meet Operations

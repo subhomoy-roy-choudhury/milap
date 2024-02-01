@@ -1,4 +1,4 @@
-name: Publish hackip to PyPI / GitHub
+name: Publish milap to PyPI / GitHub
 
 on:
   push:
